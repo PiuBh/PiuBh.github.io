@@ -1,0 +1,60 @@
+/*
+  variables.css — charte graphique centralisée
+  Toutes les valeurs réutilisables au même endroit.
+  Pour changer une couleur ou un espacement, c'est ici
+  et nulle part ailleurs.
+*/
+
+:root {
+
+  /* --- Fonds ------------------------------------------------ */
+  /* Sombre neutre, pas un noir pur (#000) qui durcit
+     trop le contraste et fatigue l'œil */
+  --c-bg:       #0c0d10;
+  --c-bg-soft:  #131419;   /* fond des blocs ouverts, accordéon */
+
+  /* --- Texte ------------------------------------------------ */
+  /* Blanc cassé sur fond sombre : meilleur confort de lecture
+     qu'un blanc pur */
+  --c-text:     #ededee;
+  --c-text-mut: #8d8f96;   /* labels, métadonnées, texte secondaire */
+
+  /* --- Accent ----------------------------------------------- */
+  /* Bleu désaturé : identifiable sans être agressif.
+     La version "soft" pour les hover et liens inline */
+  --c-accent:      #3b6ea5;
+  --c-accent-soft: #6b9bd1;
+
+  /* --- Filets ----------------------------------------------- */
+  /* Blanc très transparent : séparation visible sans peser
+     sur la composition */
+  --c-line: rgba(255, 255, 255, 0.09);
+
+  /* --- Typographie ------------------------------------------ */
+  /* Archivo Black : grotesque condensée pour les grands titres
+     Hanken Grotesk : humaniste lisible pour le corps de texte */
+  --font-title: "Archivo Black", Impact, sans-serif;
+  --font-body:  "Hanken Grotesk", system-ui, sans-serif;
+
+  --fw-normal: 400;
+  --fw-medium: 600;
+  --fw-bold:   700;   /* réservé — pas encore utilisé dans le CSS */
+
+  --lh-tight: 0.95;   /* réservé — les titres ont leur line-height en dur pour l'instant */
+  --lh-base:  1.6;    /* corps de texte */
+
+  /* --- Espacements ------------------------------------------ */
+  /* Échelle non linéaire : les petits pas sont fins,
+     les grands font vraiment respirer la page */
+  --sp-1: 0.25rem;   /*  4px */
+  --sp-2: 0.5rem;    /*  8px */
+  --sp-3: 1rem;      /* 16px */
+  --sp-4: 1.5rem;    /* 24px */
+  --sp-5: 2.5rem;    /* 40px */
+  --sp-6: 4rem;      /* 64px */
+  --sp-7: 6rem;      /* 96px */
+
+  /* --- Divers ----------------------------------------------- */
+  --maxw:       1080px;     /* largeur max du contenu centré */
+  --transition: 0.25s ease; /* durée standard pour tous les hover */
+}

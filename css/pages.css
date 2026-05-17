@@ -1,0 +1,474 @@
+/*
+  pages.css — contenu des pages
+  Hero, À propos, accordéon compétences, liste projets,
+  timeline, détail projet, formulaire de contact.
+  Pas de cartes encadrées, que des filets fins et du vide.
+*/
+
+/* ============================================================
+   HERO (accueil)
+   Centré verticalement sur toute la hauteur de l'écran.
+   Le dégradé radial sert juste à donner un peu de profondeur
+   au centre sans alourdir le fond.
+   ============================================================ */
+.hero {
+  position: relative; /* FIX : nécessaire pour que .scroll-cue
+                         se positionne par rapport au hero
+                         et non au viewport */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--sp-7) var(--sp-5);
+  background:
+    radial-gradient(ellipse at 50% 34%, #15161c 0%, var(--c-bg) 62%);
+}
+
+.hero-label {
+  font-size: 0.9rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--c-text-mut);
+  margin-bottom: var(--sp-4);
+}
+
+/* clamp() : lisible sur mobile sans écraser le desktop */
+.hero-title {
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 14vw, 13rem);
+  line-height: 0.92;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  color: var(--c-text);
+}
+.hero-title .accent { color: var(--c-accent); }
+
+.hero-meta {
+  margin-top: var(--sp-5);
+  font-size: 1rem;
+  color: var(--c-text-mut);
+}
+
+/* Indicateur de scroll : une capsule avec un point qui descend.
+   Purement CSS, aucun JS. */
+.scroll-cue {
+  position: absolute;
+  bottom: var(--sp-5);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 42px;
+  border: 2px solid var(--c-text-mut);
+  border-radius: 14px;
+}
+.scroll-cue span {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  background: var(--c-text-mut);
+  border-radius: 2px;
+  animation: sc 1.6s ease-in-out infinite;
+}
+@keyframes sc {
+  0%   { opacity: 0; transform: translateY(0); }
+  40%  { opacity: 1; }
+  80%  { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 0; }
+}
+
+/* ============================================================
+   EN-TÊTE DE PAGE (pages intérieures)
+   Le padding-top compense la topbar fixe (sp-7 + 30px).
+   ============================================================ */
+.page-head {
+  padding: calc(var(--sp-7) + 30px) var(--sp-6) var(--sp-5);
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.page-kicker {
+  font-size: 0.82rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  margin-bottom: var(--sp-3);
+}
+
+.page-title {
+  font-family: var(--font-title);
+  font-size: clamp(2.4rem, 8vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  color: var(--c-text);
+}
+.page-title .accent { color: var(--c-accent); }
+
+.page-body {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: var(--sp-5) var(--sp-6) var(--sp-7);
+}
+
+/* ============================================================
+   PAGE À PROPOS
+   Texte brut, deux paragraphes max, le dernier atténué.
+   ============================================================ */
+.about-text p {
+  font-size: 1.15rem;
+  line-height: var(--lh-base);
+  color: var(--c-text);
+  max-width: 680px;
+  margin-bottom: var(--sp-4);
+}
+.about-text p:last-child {
+  color: var(--c-text-mut);
+  font-size: 1.05rem;
+}
+
+/* ============================================================
+   ACCORDÉON COMPÉTENCES
+   Liste à plat séparée par des filets. Quand un bloc est
+   ouvert : barre d'accent à gauche + fond légèrement différent.
+   Le JS gère uniquement max-height et la classe is-open.
+   ============================================================ */
+.bloc {
+  /* FIX : border-left transparent par défaut pour éviter
+     le décalage de 3px au moment où le bloc s'ouvre */
+  border-left: 3px solid transparent;
+  border-bottom: 1px solid var(--c-line);
+}
+
+.bloc-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: var(--sp-5) var(--sp-3);
+  text-align: left;
+  color: var(--c-text);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+/* pointer-events: none sur les enfants pour que le clic
+   remonte toujours sur .bloc-toggle, pas sur un enfant */
+.bloc-toggle * { pointer-events: none; }
+.bloc-toggle:hover { color: var(--c-accent-soft); }
+
+.bloc.is-open {
+  border-left-color: var(--c-accent); /* passe de transparent à accent */
+  background: var(--c-bg-soft);
+}
+.bloc.is-open .bloc-toggle       { color: var(--c-accent-soft); }
+.bloc.is-open .bloc-toggle:hover { color: var(--c-accent-soft); }
+
+.b-name {
+  font-family: var(--font-title);
+  font-size: clamp(1.2rem, 3.5vw, 1.9rem);
+  text-transform: uppercase;
+}
+
+.b-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+/* Badge d'état : "Acquis" ou "En cours" */
+.b-state {
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border: 1px solid;
+  border-radius: 2px;
+}
+.state-done { color: var(--c-accent-soft); border-color: var(--c-accent); }
+.state-wip  { color: var(--c-text-mut);    border-color: var(--c-line); }
+.bloc.is-open .b-state { color: var(--c-accent-soft); border-color: var(--c-accent); }
+
+/* Le +/- est dans le HTML, accordion.js ne le touche pas.
+   Si tu veux une rotation au clic, ajouter ici :
+   .bloc.is-open .b-sign { transform: rotate(45deg); transition: transform 0.25s ease; } */
+.b-sign {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+/* Panneau déroulable : max-height à 0 par défaut,
+   la valeur finale est injectée par JS au clic */
+.bloc-panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+}
+.bloc-panel-inner {
+  padding: var(--sp-4) var(--sp-3) var(--sp-5);
+}
+
+.bloc-desc {
+  font-size: 1rem;
+  line-height: var(--lh-base);
+  color: var(--c-text);
+  max-width: 660px;
+  margin-bottom: var(--sp-4);
+}
+
+/* Sous-titre dans un bloc ouvert, très discret */
+.bloc-sub {
+  font-size: 0.82rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--c-text-mut);
+  margin: var(--sp-4) 0 var(--sp-3);
+}
+
+/* Liste à puce sobre : pastille en accent, pas d'emoji */
+.bloc-list { margin-bottom: var(--sp-3); }
+.bloc-list li {
+  position: relative;
+  padding-left: var(--sp-4);
+  margin-bottom: var(--sp-2);
+  font-size: 1rem;
+  color: var(--c-text);
+  line-height: var(--lh-base);
+}
+.bloc-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  background: var(--c-accent);
+  border-radius: 50%;
+}
+
+/* Ligne cliquable vers un projet, sans encadré */
+.bloc-proj {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--sp-3) 0;
+  color: var(--c-text);
+  border-bottom: 1px solid transparent;
+  width: fit-content;
+  transition: border-color var(--transition), color var(--transition);
+}
+.bloc-proj:hover {
+  color: var(--c-accent-soft);
+  border-bottom-color: var(--c-accent-soft);
+}
+.bloc-proj .pl {
+  font-size: 0.9rem;
+  color: var(--c-text-mut);
+}
+
+/* ============================================================
+   PAGE PROJETS — liste à plat
+   Chaque ligne glisse légèrement vers la droite au hover
+   grâce au padding-left en transition.
+   ============================================================ */
+.pj {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: var(--sp-5) var(--sp-3);
+  border-bottom: 1px solid var(--c-line);
+  transition: background var(--transition), padding-left var(--transition);
+}
+.pj:hover {
+  background: var(--c-bg-soft);
+  padding-left: var(--sp-4);
+}
+
+.pj-main { display: flex; flex-direction: column; gap: 8px; }
+.pj-name {
+  font-family: var(--font-title);
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  color: var(--c-text);
+  text-transform: uppercase;
+}
+.pj-desc {
+  color: var(--c-text-mut);
+  font-size: 0.98rem;
+  max-width: 560px;
+  line-height: var(--lh-base);
+}
+
+.pj-right  { text-align: right; white-space: nowrap; }
+.pj-tags   { font-size: 0.85rem; color: var(--c-text-mut); }
+.pj-gh     { display: block; margin-top: 8px; font-size: 0.85rem; color: var(--c-accent-soft); }
+
+/* ============================================================
+   TIMELINE (parcours, détail projet)
+   Barre verticale à gauche, pastille par événement.
+   ============================================================ */
+.tl { border-left: 2px solid var(--c-line); margin-left: 6px; }
+.tl-item { position: relative; padding: 0 0 var(--sp-5) var(--sp-5); }
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--c-accent);
+}
+.tl-item .y { font-family: var(--font-title); font-size: 1.4rem; color: var(--c-accent); margin-bottom: 4px; }
+.tl-item .t { font-size: 1.05rem; color: var(--c-text); margin-bottom: 4px; }
+.tl-item .d { color: var(--c-text-mut); font-size: 0.95rem; line-height: var(--lh-base); }
+
+/* ============================================================
+   DÉTAIL D'UN PROJET
+   ============================================================ */
+.proj-section { margin-bottom: var(--sp-5); max-width: 720px; }
+.proj-section h2 {
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  margin-bottom: var(--sp-3);
+}
+.proj-section p {
+  color: var(--c-text);
+  line-height: var(--lh-base);
+  margin-bottom: var(--sp-3);
+}
+.proj-section .meta { color: var(--c-text-mut); font-size: 0.95rem; }
+
+/* Bouton GitHub : bord en accent, fond plein au hover */
+.gh-btn {
+  display: inline-block;
+  font-family: var(--font-title);
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--c-text);
+  border: 1px solid var(--c-accent);
+  padding: var(--sp-3) var(--sp-5);
+  margin-top: var(--sp-3);
+  transition: background var(--transition), color var(--transition);
+}
+.gh-btn:hover { background: var(--c-accent); color: #fff; }
+
+/* Lien retour, discret, soulignement au hover seulement */
+.back {
+  display: inline-block;
+  margin-top: var(--sp-6);
+  color: var(--c-accent-soft);
+  font-size: 0.95rem;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color var(--transition);
+}
+.back:hover { border-bottom-color: var(--c-accent-soft); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 760px) {
+  .page-head { padding: calc(var(--sp-6) + 60px) var(--sp-4) var(--sp-4); }
+  .page-body { padding: var(--sp-4) var(--sp-4) var(--sp-6); }
+  .hero-label { font-size: 0.78rem; letter-spacing: 3px; }
+
+  /* Sur mobile les tags et le lien GitHub passent sous le titre */
+  .pj { flex-direction: column; gap: var(--sp-2); }
+  .pj-right { text-align: left; white-space: normal; }
+}
+
+/* ============================================================
+   PAGE D'ACCUEIL À SCROLL — sections + formulaire contact
+   Chaque section prend presque toute la hauteur d'écran,
+   ce qui donne un défilement section par section.
+   ============================================================ */
+.home-sec {
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  padding: var(--sp-7) var(--sp-6);
+}
+.home-wrap { max-width: var(--maxw); margin: 0 auto; width: 100%; }
+
+.home-title {
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 0.95;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  color: var(--c-text);
+  margin: var(--sp-3) 0 var(--sp-4);
+}
+.home-title .accent { color: var(--c-accent); }
+
+.home-text {
+  font-size: 1.1rem;
+  line-height: var(--lh-base);
+  color: var(--c-text-mut);
+  max-width: 620px;
+  margin-bottom: var(--sp-4);
+}
+
+/* --- Formulaire de contact ---------------------------------- */
+/* Fond transparent, que la bordure basse visible.
+   Focus passe la bordure en accent pour indiquer le champ actif. */
+.contact-form { max-width: 520px; margin: var(--sp-4) 0 var(--sp-5); }
+
+.field { margin-bottom: var(--sp-4); }
+.field label {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--c-text-mut);
+  margin-bottom: var(--sp-2);
+}
+.field input,
+.field textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--c-line);
+  color: var(--c-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: var(--sp-2) 0;
+  outline: none;
+  transition: border-color var(--transition);
+}
+.field input:focus,
+.field textarea:focus { border-bottom-color: var(--c-accent); }
+.field textarea { resize: vertical; }
+
+.form-send {
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  color: var(--c-text);
+  border: 1px solid var(--c-accent);
+  padding: var(--sp-3) var(--sp-6);
+  transition: background var(--transition), color var(--transition);
+}
+.form-send:hover { background: var(--c-accent); color: #fff; }
+
+.contact-alt { margin-top: var(--sp-4); }
+
+/* Lien inline dans du texte, soulignement au hover seulement */
+.inline-link {
+  color: var(--c-accent-soft);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition);
+}
+.inline-link:hover { border-bottom-color: var(--c-accent-soft); }
+
+@media (max-width: 760px) {
+  .home-sec { min-height: auto; padding: var(--sp-6) var(--sp-4); }
+}

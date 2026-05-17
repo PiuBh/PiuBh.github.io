@@ -1,0 +1,46 @@
+/*
+  reset.css — remise à zéro du navigateur
+  Chaque navigateur applique ses propres marges et paddings
+  par défaut. Ce fichier les neutralise pour partir d'une
+  base identique partout, avant de tout redéfinir dans
+  variables.css, layout.css et pages.css.
+*/
+
+/* box-sizing: border-box sur tout : padding et border
+   inclus dans la largeur déclarée, plus de surprises. */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Défilement fluide entre les ancres, uniquement si
+   l'utilisateur n'a pas demandé à réduire les animations
+   dans les préférences de son OS (accessibilité) */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  min-height: 100vh;
+  /* Lissage des polices sur Chrome / Safari */
+  -webkit-font-smoothing: antialiased;
+  /* Même effet sur Firefox macOS */
+  -moz-osx-font-smoothing: grayscale;
+  /* Meilleur rendu des crénages et ligatures */
+  text-rendering: optimizeLegibility;
+}
+
+/* Les images et SVG en block évitent l'espace parasite
+   qu'un élément inline laisse sous lui */
+img, svg { display: block; max-width: 100%; }
+
+/* Les liens héritent de la couleur du parent,
+   le soulignement est géré au cas par cas */
+a { color: inherit; text-decoration: none; }
+
+ul, ol { list-style: none; }
+
+/* Les boutons sans style par défaut :
+   police héritée, curseur pointeur, fond et bord retirés */
+button { font: inherit; cursor: pointer; border: none; background: none; }

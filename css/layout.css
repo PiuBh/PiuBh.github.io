@@ -1,0 +1,118 @@
+/*
+  layout.css - structure globale de la page
+  Topbar fixe en haut, icônes réseaux fixées en bas à gauche,
+  contenu centré avec beaucoup d'espace. Pas de fond sur la barre,
+  pas de JS, que du CSS.
+*/
+
+body {
+  font-family: var(--font-body);
+  background: var(--c-bg);
+  color: var(--c-text);
+  min-height: 100vh;
+}
+
+/* --- Topbar -------------------------------------------------- */
+/* Flottante au-dessus du contenu, nom à gauche, nav à droite.
+   z-index à 20 pour rester lisible quand le contenu défile dessous. */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--sp-5) var(--sp-6);
+  z-index: 20;
+}
+
+.brand {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  color: var(--c-text);
+}
+
+/* Nav en colonne à droite, liens alignés à droite */
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  font-size: 0.95rem;
+}
+.nav a {
+  color: var(--c-text-mut);
+  transition: color var(--transition);
+}
+.nav a:hover        { color: var(--c-text); }
+.nav a.is-current   { color: var(--c-text); font-weight: var(--fw-medium); }
+
+/* --- Icônes réseaux ------------------------------------------ */
+/* Colonne fixe en bas à gauche. Léger translateY au hover
+   pour donner un retour visuel sans surcharger. */
+.social {
+  position: fixed;
+  left: var(--sp-6);
+  bottom: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  z-index: 20;
+}
+.social a {
+  color: var(--c-text-mut);
+  transition: color var(--transition), transform var(--transition);
+}
+.social a:hover {
+  color: var(--c-accent-soft);
+  transform: translateY(-2px);
+}
+.social svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* --- Pied de page -------------------------------------------- */
+.foot {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-6);
+  font-size: 0.85rem;
+  color: var(--c-text-mut);
+  border-top: 1px solid var(--c-line);
+}
+
+/* --- Mobile -------------------------------------------------- */
+/* En dessous de 760px : topbar en colonne, nav horizontale,
+   icônes réseaux centrées en bas (plus pratique au pouce). */
+@media (max-width: 760px) {
+  .topbar {
+    flex-direction: column;
+    gap: var(--sp-3);
+    padding: var(--sp-4);
+  }
+
+  .nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sp-3);
+  }
+
+  .social {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: var(--sp-3);
+    flex-direction: row;
+    gap: var(--sp-5);
+  }
+
+  .foot {
+    flex-direction: column;
+    text-align: center;
+  }
+}
