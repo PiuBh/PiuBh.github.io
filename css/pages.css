@@ -1,5 +1,5 @@
 /*
-  pages.css — contenu des pages
+  pages.css contenu des pages
   Hero, À propos, accordéon compétences, liste projets,
   timeline, détail projet, formulaire de contact.
   Pas de cartes encadrées, que des filets fins et du vide.
@@ -272,7 +272,7 @@
 }
 
 /* ============================================================
-   PAGE PROJETS — liste à plat
+   PAGE PROJETS liste à plat
    Chaque ligne glisse légèrement vers la droite au hover
    grâce au padding-left en transition.
    ============================================================ */
@@ -386,7 +386,7 @@
 }
 
 /* ============================================================
-   PAGE D'ACCUEIL À SCROLL — sections + formulaire contact
+   PAGE D'ACCUEIL À SCROLL sections + formulaire contact
    Chaque section prend presque toute la hauteur d'écran,
    ce qui donne un défilement section par section.
    ============================================================ */
@@ -474,7 +474,7 @@
 }
 
 /* ============================================================
-   SCROLL-MARGIN — compense la topbar fixe
+   SCROLL-MARGIN compense la topbar fixe
    Sans ça, quand on clique sur un lien de nav, la section
    arrive sous la topbar et son titre est coupé.
    La valeur (~110px) couvre la hauteur de la topbar + marge.

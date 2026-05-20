@@ -1,5 +1,5 @@
 /*
-  nav.js — section active dans la navigation
+  nav.js section active dans la navigation
   IntersectionObserver sur chaque section : quand une section
   occupe au moins 40% de l'écran, le lien correspondant
   dans la nav passe en is-current.

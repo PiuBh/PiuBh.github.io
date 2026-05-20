@@ -1,5 +1,5 @@
 /*
-  accordion.js — ouverture/fermeture des blocs compétences
+  accordion.js ouverture/fermeture des blocs compétences
   C'est le seul fichier JS du site. Pas de librairie,
   pas d'import : un écouteur par bouton, une classe CSS,
   une hauteur. C'est tout.

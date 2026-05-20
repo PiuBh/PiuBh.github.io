@@ -1,5 +1,5 @@
 /*
-  variables.css — charte graphique centralisée
+  variables.css charte graphique centralisée
   Toutes les valeurs réutilisables au même endroit.
   Pour changer une couleur ou un espacement, c'est ici
   et nulle part ailleurs.
@@ -38,9 +38,9 @@
 
   --fw-normal: 400;
   --fw-medium: 600;
-  --fw-bold:   700;   /* réservé — pas encore utilisé dans le CSS */
+  --fw-bold:   700;   /* réservé pas encore utilisé dans le CSS */
 
-  --lh-tight: 0.95;   /* réservé — les titres ont leur line-height en dur pour l'instant */
+  --lh-tight: 0.95;   /* réservé les titres ont leur line-height en dur pour l'instant */
   --lh-base:  1.6;    /* corps de texte */
 
   /* --- Espacements ------------------------------------------ */
