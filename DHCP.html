@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serveur DHCP — Piyush Bhatt</title>
+  <meta name="description" content="Configuration d'un serveur DHCP sous Linux avec Netkit, analyse des trames réseau avec Wireshark.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="index.html" class="brand">PIYUSH BHATT</a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="index.html#apropos">À propos</a>
+      <a href="index.html#competences">Compétences</a>
+      <a href="index.html#projets" class="is-current">Projets</a>
+      <a href="index.html#parcours">Parcours</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+
+  <div class="social">
+    <a href="https://github.com/PiuBh" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/piyush-bhatt-dev" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+    </a>
+    <a href="assets/cv/CV_BHATT_Piyush.pdf" target="_blank" rel="noopener" aria-label="Mon CV">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+    </a>
+  </div>
+
+  <main>
+    <div class="page-head">
+      <a href="index.html#projets" class="back">Retour aux projets</a>
+      <p class="page-kicker">SAE BUT1 · Réseau · Groupe de trois</p>
+      <h1 class="page-title">Serveur <span class="accent">DHCP</span></h1>
+    </div>
+
+    <div class="proj-layout">
+
+      <div class="proj-main">
+
+        <section class="proj-section">
+          <h2>Contexte</h2>
+          <p>Projet réseau de première année réalisé en groupe de trois. L'objectif était de configurer un serveur DHCP fonctionnel sur une infrastructure Linux virtualisée avec Netkit, d'analyser les échanges réseau produits, et d'identifier les failles de sécurité du protocole. Un rapport technique documentant l'ensemble du travail était attendu en livrable final.</p>
+          <p class="meta">BUT Informatique 1re année · IUT Gustave Eiffel · 2025</p>
+        </section>
+
+        <section class="proj-section">
+          <h2>Ce que j'ai fait</h2>
+          <p>J'ai pris en charge les recherches sur les commandes Netkit et la configuration des labs virtuels. La mise en place du serveur demandait de créer les fichiers de configuration pour chaque machine virtuelle du réseau, de définir les baux IP fixes (par adresse MAC) et dynamiques (plage DHCP), et de tester que les machines clientes recevaient bien leurs adresses.</p>
+          <p>Pour valider le fonctionnement, j'ai utilisé Wireshark pour capturer et analyser les trames réseau. Ça permettait de voir en détail les quatre échanges du protocole DORA (Discover, Offer, Request, Acknowledge) et de vérifier que chaque étape se déroulait correctement.</p>
+          <p>J'ai aussi documenté les vecteurs d'attaque connus sur DHCP (DHCP Starvation, DHCP Spoofing) dans le rapport technique, en expliquant comment chacun exploite les failles du protocole.</p>
+        </section>
+
+        <section class="proj-section">
+          <h2>Difficultés surmontées</h2>
+          <p>La principale difficulté était la documentation Netkit, très ancienne et peu maintenue. Il fallait croiser plusieurs sources, adapter des commandes trouvées en ligne à notre version, et avancer par essai-erreur pour obtenir une configuration qui tienne. J'ai fait preuve de persévérance sur cette phase de recherche, qui a déboqué l'avancement du groupe.</p>
+          <p>Comprendre le protocole DORA en profondeur pour pouvoir l'expliquer dans le rapport a aussi demandé un vrai travail de lecture des RFCs et des captures Wireshark pour relier la théorie à ce qu'on observait concrètement.</p>
+        </section>
+
+      </div>
+
+      <aside class="proj-sidebar">
+        <div class="proj-sidebar-inner">
+          <p class="bloc-sub">Technologies</p>
+          <div class="tags">
+            <span class="tag">Linux</span>
+            <span class="tag">Netkit</span>
+            <span class="tag">DHCP</span>
+            <span class="tag">Wireshark</span>
+            <span class="tag">TCP/IP</span>
+          </div>
+
+          <p class="bloc-sub">Blocs BUT</p>
+          <div class="tags">
+            <span class="tag tag-accent">BC3 Administrer</span>
+            <span class="tag tag-accent">BC6 Collaborer</span>
+          </div>
+
+          <p class="bloc-sub">Équipe</p>
+          <div class="tags">
+            <span class="tag">Groupe de trois</span>
+          </div>
+
+          <p class="bloc-sub">Code</p>
+          <a href="https://github.com/PiuBh/serveur-dhcp-linux" target="_blank" rel="noopener" class="proj-link">Voir sur GitHub</a>
+        </div>
+      </aside>
+
+    </div>
+
+    <nav class="proj-nav" aria-label="Navigation entre projets">
+      <a href="Wall_is_You.html">Projet précédent : Wall Is You</a>
+      <a href="Unesco.html">Projet suivant : Site UNESCO</a>
+    </nav>
+  </main>
+
+  <footer class="foot">
+    <span>&copy; 2026 Piyush Bhatt</span>
+    <span>BUT Informatique, IUT Gustave Eiffel</span>
+  </footer>
+
+</body>
+</html>

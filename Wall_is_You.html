@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wall Is You — Piyush Bhatt</title>
+  <meta name="description" content="Jeu de logique en Python avec parcours de graphe BFS, interface tkinter et sauvegardes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="index.html" class="brand">PIYUSH BHATT</a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="index.html#apropos">À propos</a>
+      <a href="index.html#competences">Compétences</a>
+      <a href="index.html#projets" class="is-current">Projets</a>
+      <a href="index.html#parcours">Parcours</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+
+  <div class="social">
+    <a href="https://github.com/PiuBh" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/piyush-bhatt-dev" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+    </a>
+    <a href="assets/cv/CV_BHATT_Piyush.pdf" target="_blank" rel="noopener" aria-label="Mon CV">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+    </a>
+  </div>
+
+  <main>
+    <div class="page-head">
+      <a href="index.html#projets" class="back">Retour aux projets</a>
+      <p class="page-kicker">SAE BUT1 · Python · Binôme</p>
+      <h1 class="page-title">Wall Is <span class="accent">You</span></h1>
+    </div>
+
+    <div class="proj-layout">
+
+      <div class="proj-main">
+
+        <section class="proj-section">
+          <h2>Contexte</h2>
+          <p>Projet tutoré de première année en binôme, réalisé dans le cadre du cours d'initiation au développement. L'objectif était de recréer un jeu de logique inspiré de <em>Baba Is You</em> : un aventurier doit traverser un donjon en affrontant des dragons, guidé par les décisions du joueur. Le programme devait gérer les tours de jeu, les mouvements, les niveaux et les ressources visuelles, tout en étant structuré et maintenable.</p>
+          <p class="meta">BUT Informatique 1re année · IUT Gustave Eiffel · 2025</p>
+        </section>
+
+        <section class="proj-section">
+          <h2>Ce que j'ai fait</h2>
+          <p>J'ai implémenté la logique de pathfinding avec un algorithme BFS (recherche en largeur) appliqué sur un graphe dynamique représentant les salles du donjon. À chaque tour, l'aventurier calcule le chemin optimal vers le dragon le plus accessible en fonction des niveaux et des connexions entre salles.</p>
+          <p>J'ai géré l'intégration des ressources visuelles dans l'interface tkinter : chargement des images (dragon, donjon, aventurier), rotations à 90°, 180° et 270° pour orienter les salles selon les choix du joueur. La sauvegarde et le chargement d'une partie ont aussi été implémentés pour permettre de reprendre où on s'était arrêté.</p>
+          <p>Le code est organisé en plusieurs modules séparés par responsabilité, ce qui a facilité la collaboration en binôme : chacun travaillait sur sa partie sans bloquer l'autre.</p>
+        </section>
+
+        <section class="proj-section">
+          <h2>Difficultés surmontées</h2>
+          <p>Le projet a démarré alors qu'on découvrait Python en cours. Gérer les images avec PIL/tkinter, les rotations et l'affichage en temps réel sur une grille dynamique représentait une vraie difficulté technique pour des débutants. On a avancé par petites étapes : d'abord un affichage basique, puis les rotations, puis la logique BFS, et enfin les sauvegardes.</p>
+          <p>Coordonner le travail en binôme sur un code qui dépend de structures partagées a aussi demandé de bien documenter chaque fonction et de se synchroniser régulièrement avant la soutenance.</p>
+        </section>
+
+      </div>
+
+      <aside class="proj-sidebar">
+        <div class="proj-sidebar-inner">
+          <p class="bloc-sub">Technologies</p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">tkinter</span>
+            <span class="tag">PIL</span>
+            <span class="tag">BFS</span>
+            <span class="tag">Git</span>
+          </div>
+
+          <p class="bloc-sub">Blocs BUT</p>
+          <div class="tags">
+            <span class="tag tag-accent">BC1 Réaliser</span>
+            <span class="tag tag-accent">BC2 Optimiser</span>
+            <span class="tag tag-accent">BC6 Collaborer</span>
+          </div>
+
+          <p class="bloc-sub">Équipe</p>
+          <div class="tags">
+            <span class="tag">Binôme</span>
+          </div>
+
+          <p class="bloc-sub">Code</p>
+          <a href="https://github.com/PiuBh/wall-is-you" target="_blank" rel="noopener" class="proj-link">Voir sur GitHub</a>
+        </div>
+      </aside>
+
+    </div>
+
+    <nav class="proj-nav" aria-label="Navigation entre projets">
+      <a href="index.html#projets">Retour aux projets</a>
+      <a href="DHCP.html">Projet suivant : Serveur DHCP</a>
+    </nav>
+  </main>
+
+  <footer class="foot">
+    <span>&copy; 2026 Piyush Bhatt</span>
+    <span>BUT Informatique, IUT Gustave Eiffel</span>
+  </footer>
+
+</body>
+</html>

@@ -48,7 +48,7 @@
 
 .hero-meta {
   margin-top: var(--sp-5);
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: var(--c-text-mut);
 }
 
@@ -471,4 +471,149 @@
 
 @media (max-width: 760px) {
   .home-sec { min-height: auto; padding: var(--sp-6) var(--sp-4); }
+}
+
+/* ============================================================
+   SCROLL-MARGIN — compense la topbar fixe
+   Sans ça, quand on clique sur un lien de nav, la section
+   arrive sous la topbar et son titre est coupé.
+   La valeur (~110px) couvre la hauteur de la topbar + marge.
+   ============================================================ */
+section[id] {
+  scroll-margin-top: 110px;
+}
+
+/* ============================================================
+   LIENS DE LA TIMELINE (parcours)
+   ============================================================ */
+.tl-link {
+  display: inline-block;
+  font-size: 1.05rem;
+  color: var(--c-text);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color var(--transition), color var(--transition);
+  cursor: pointer;
+  line-height: var(--lh-base);
+}
+.tl-link:hover {
+  color: var(--c-accent-soft);
+  border-bottom-color: var(--c-accent-soft);
+}
+.tl-link--static {
+  cursor: default;
+  color: var(--c-text-mut);
+}
+.tl-link--static:hover {
+  color: var(--c-text-mut);
+  border-bottom-color: transparent;
+}
+
+/* ============================================================
+   HOVER PLUS VISIBLE SUR LES BLOCS COMPÉTENCES
+   Fond légèrement plus fort + translation du + vers la droite
+   pour signaler clairement que c'est cliquable.
+   ============================================================ */
+.bloc-toggle:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+.bloc-toggle:hover .b-sign {
+  transform: translateX(4px);
+  color: var(--c-accent-soft);
+}
+.b-sign {
+  transition: transform var(--transition), color var(--transition);
+}
+
+
+/* ============================================================
+   PAGES DÉTAIL PROJET
+   Deux colonnes sur desktop : contenu principal à gauche,
+   sidebar métadonnées à droite (sticky).
+   ============================================================ */
+
+.proj-layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: var(--sp-6);
+  align-items: start;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: var(--sp-4) var(--sp-6) var(--sp-7);
+}
+
+/* La sidebar reste visible en scrollant */
+.proj-sidebar-inner {
+  position: sticky;
+  top: 120px;
+  padding: var(--sp-4);
+  border-left: 1px solid var(--c-line);
+}
+
+/* Tags technos / blocs BUT */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: var(--sp-4);
+}
+.tag {
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+  padding: 3px 10px;
+  border: 1px solid var(--c-line);
+  border-radius: 2px;
+  color: var(--c-text-mut);
+}
+.tag-accent {
+  border-color: var(--c-accent);
+  color: var(--c-accent-soft);
+}
+
+/* Lien live dans la sidebar */
+.proj-link {
+  display: inline-block;
+  font-size: 0.88rem;
+  color: var(--c-accent-soft);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  margin-bottom: var(--sp-2);
+  transition: border-color var(--transition);
+}
+.proj-link:hover { border-bottom-color: var(--c-accent-soft); }
+
+/* Navigation entre projets en bas de page */
+.proj-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: var(--sp-5) var(--sp-6) var(--sp-6);
+  border-top: 1px solid var(--c-line);
+}
+.proj-nav a {
+  font-size: 0.9rem;
+  color: var(--c-text-mut);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color var(--transition), border-color var(--transition);
+}
+.proj-nav a:hover {
+  color: var(--c-accent-soft);
+  border-bottom-color: var(--c-accent-soft);
+}
+
+@media (max-width: 760px) {
+  .proj-layout {
+    grid-template-columns: 1fr;
+    padding: var(--sp-4);
+  }
+  .proj-sidebar-inner {
+    position: static;
+    border-left: none;
+    border-top: 1px solid var(--c-line);
+    padding: var(--sp-4) 0 0;
+  }
+  .proj-nav { padding: var(--sp-4); }
 }
